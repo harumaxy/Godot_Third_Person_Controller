@@ -18,7 +18,12 @@ _global_script_class_icons={
 config/name="Godot Third Person Controller Demo"
 config/description="Full tutorial series:
 https://www.youtube.com/playlist?list=PLqbBeBobXe09NZez_1LLRcT7NQ9NfUCBC"
+run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://src/singleton/Globals.gd"
 
 [display]
 
