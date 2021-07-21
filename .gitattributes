@@ -5,3 +5,4 @@ ui/circle.png filter=lfs diff=lfs merge=lfs -text
 ui/direction.png filter=lfs diff=lfs merge=lfs -text
 ui/velocity.png filter=lfs diff=lfs merge=lfs -text
 Player/Godot_Chan_Stealth.glb filter=lfs diff=lfs merge=lfs -text
+NotoSans-Black.ttf filter=lfs diff=lfs merge=lfs -text
