@@ -20,6 +20,7 @@ func _input(event):
     rot_h += -event.relative.x * sensitivity.x
     rot_v += event.relative.y * sensitivity.y
 
+
 func _physics_process(delta):
   rot_v = clamp(rot_v, rot_v_min, rot_v_max)
   $h.rotation_degrees.y = lerp($h.rotation_degrees.y, rot_h, acceleration.x * delta)
