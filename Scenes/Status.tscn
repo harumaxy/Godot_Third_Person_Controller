@@ -101,10 +101,10 @@ __meta__ = {
 }
 
 [node name="Space" type="ColorRect" parent="."]
-margin_left = 150.0
-margin_top = 50.0
-margin_right = 230.0
-margin_bottom = 90.0
+margin_left = 149.522
+margin_top = 50.4778
+margin_right = 229.522
+margin_bottom = 90.4778
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -117,6 +117,29 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Space"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Aim" type="ColorRect" parent="."]
+margin_left = 250.0
+margin_top = 50.0
+margin_right = 330.0
+margin_bottom = 90.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Aim"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Aim"
 align = 1
 valign = 1
 __meta__ = {

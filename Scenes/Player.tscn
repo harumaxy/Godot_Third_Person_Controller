@@ -1,9 +1,124 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Player/Godot_Chan_Stealth.glb" type="PackedScene" id=1]
 [ext_resource path="res://src/CameraRoot.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Status.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Player.gd" type="Script" id=4]
+[ext_resource path="res://Animations/walk_forward-loop.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/walk_forward_left-loop.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/walk_right-loop.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/walk_back_right-loop.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/walk_left-loop.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/roll.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/walk_forward_right-loop.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/run_forward-loop.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/walk_back_left-loop.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/idle-loop.tres" type="Animation" id=14]
+[ext_resource path="res://Animations/walk_backward-loop.tres" type="Animation" id=15]
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "run_forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "roll"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "walk_forward-loop"
+
+[sub_resource type="AnimationNodeOneShot" id=6]
+
+[sub_resource type="AnimationNodeTimeScale" id=7]
+
+[sub_resource type="AnimationNodeTimeScale" id=8]
+
+[sub_resource type="AnimationNodeTimeScale" id=9]
+
+[sub_resource type="AnimationNodeTransition" id=10]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "aiming"
+input_0/auto_advance = false
+input_1/name = "not_aiming"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlend3" id=11]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk_forward_left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "walk_forward_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk_forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "walk_left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "walk_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "walk_back_left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "walk_backward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "walk_back_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=21]
+blend_point_0/node = SubResource( 12 )
+blend_point_0/pos = Vector2( -1, 1 )
+blend_point_1/node = SubResource( 13 )
+blend_point_1/pos = Vector2( 1, 1 )
+blend_point_2/node = SubResource( 14 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 15 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 16 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 17 )
+blend_point_5/pos = Vector2( -1, -1 )
+blend_point_6/node = SubResource( 18 )
+blend_point_6/pos = Vector2( 0, -1 )
+blend_point_7/node = SubResource( 19 )
+blend_point_7/pos = Vector2( 1, -1 )
+blend_point_8/node = SubResource( 20 )
+blend_point_8/pos = Vector2( 0, 0 )
+
+[sub_resource type="AnimationNodeBlendTree" id=22]
+graph_offset = Vector2( 94, -38.9987 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( 140, 390 )
+"nodes/Animation 2/node" = SubResource( 2 )
+"nodes/Animation 2/position" = Vector2( 150, 510 )
+"nodes/Animation 3/node" = SubResource( 3 )
+"nodes/Animation 3/position" = Vector2( 370, 280 )
+"nodes/Animation 4/node" = SubResource( 4 )
+"nodes/Animation 4/position" = Vector2( 830, 290 )
+nodes/OneShot/node = SubResource( 6 )
+nodes/OneShot/position = Vector2( 990, 110 )
+nodes/TimeScale/node = SubResource( 9 )
+nodes/TimeScale/position = Vector2( 350, 110 )
+"nodes/TimeScale 2/node" = SubResource( 7 )
+"nodes/TimeScale 2/position" = Vector2( 370, 390 )
+"nodes/TimeScale 3/node" = SubResource( 8 )
+"nodes/TimeScale 3/position" = Vector2( 370, 500 )
+nodes/aim_transition/node = SubResource( 10 )
+nodes/aim_transition/position = Vector2( 790, 110 )
+nodes/iwr_blend/node = SubResource( 11 )
+nodes/iwr_blend/position = Vector2( 590, 350 )
+nodes/output/position = Vector2( 1180, 110 )
+nodes/strafe/node = SubResource( 21 )
+nodes/strafe/position = Vector2( 160, 100 )
+node_connections = [ "aim_transition", 0, "TimeScale", "aim_transition", 1, "iwr_blend", "TimeScale 3", 0, "Animation 2", "TimeScale 2", 0, "Animation", "TimeScale", 0, "strafe", "iwr_blend", 0, "Animation 3", "iwr_blend", 1, "TimeScale 2", "iwr_blend", 2, "TimeScale 3", "OneShot", 0, "aim_transition", "OneShot", 1, "Animation 4", "output", 0, "OneShot" ]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.243203
@@ -11,6 +126,32 @@ radius = 0.243203
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
 script = ExtResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 22 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/OneShot/active = false
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+"parameters/TimeScale 3/scale" = 1.0
+parameters/aim_transition/current = 0
+parameters/iwr_blend/blend_amount = -1.0
+parameters/strafe/blend_position = Vector2( 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Mesh/Godot_Chan_Stealth")
+anims/idle-loop = ExtResource( 14 )
+anims/roll = ExtResource( 10 )
+anims/run_forward-loop = ExtResource( 12 )
+anims/walk_back_left-loop = ExtResource( 13 )
+anims/walk_back_right-loop = ExtResource( 8 )
+anims/walk_backward-loop = ExtResource( 15 )
+anims/walk_forward-loop = ExtResource( 5 )
+anims/walk_forward_left-loop = ExtResource( 6 )
+anims/walk_forward_right-loop = ExtResource( 11 )
+anims/walk_left-loop = ExtResource( 9 )
+anims/walk_right-loop = ExtResource( 7 )
 
 [node name="Mesh" type="Spatial" parent="."]
 
@@ -32,41 +173,10 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -
 
 [node name="Status" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = -683.0
-margin_top = 0.0
-margin_right = 683.0
-margin_bottom = 768.0
-
-[node name="W" parent="Status" index="0"]
-margin_left = 526.589
-margin_top = 143.39
-margin_right = 566.589
-margin_bottom = 183.39
-
-[node name="A" parent="Status" index="1"]
-margin_left = 476.589
-margin_top = 193.39
-margin_right = 516.589
-margin_bottom = 233.39
-
-[node name="S" parent="Status" index="2"]
-margin_left = 526.589
-margin_top = 193.39
-margin_right = 566.589
-margin_bottom = 233.39
-
-[node name="D" parent="Status" index="3"]
-margin_left = 576.589
-margin_top = 193.39
-margin_right = 616.589
-margin_bottom = 233.39
-
-[node name="Space" parent="Status" index="4"]
-margin_left = 676.589
-margin_top = 193.39
-margin_right = 756.589
-margin_bottom = 233.39
-
-[editable path="Status"]
+anchor_bottom = 0.5
+margin_left = -106.362
+margin_top = -210.964
+margin_right = -106.362
+margin_bottom = 557.036
